@@ -2,32 +2,40 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAHUL SUPREME WORLD</title>
+    <title>RAHUL POWER ENGINE PRO</title>
     <style>
-        body { background: #000; color: #0f0; font-family: sans-serif; text-align: center; padding: 0; margin: 0; }
-        .header { background: #111; padding: 20px; border-bottom: 2px solid #0f0; }
-        input { padding: 12px; width: 70%; border-radius: 5px; border: 1px solid #0f0; background: #000; color: #0f0; outline: none; }
-        button { padding: 12px 20px; background: #0f0; color: #000; font-weight: bold; border: none; cursor: pointer; border-radius: 5px; }
-        #player { margin-top: 20px; padding: 10px; }
-        iframe { width: 100%; aspect-ratio: 16/9; border: 1px solid #333; border-radius: 10px; }
-        .download-btn { display: block; background: #fff; color: #000; padding: 15px; text-decoration: none; font-weight: bold; margin-top: 10px; border-radius: 5px; }
+        body { background: #000; color: #0f0; font-family: sans-serif; text-align: center; margin: 0; }
+        .header { background: #111; padding: 20px; border-bottom: 2px solid #0f0; position: sticky; top: 0; }
+        input { padding: 12px; width: 60%; border-radius: 5px; border: 1px solid #0f0; background: #000; color: #0f0; outline: none; }
+        button { padding: 12px 15px; background: #0f0; color: #000; font-weight: bold; border: none; cursor: pointer; border-radius: 5px; }
+        #results { margin-top: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 10px; }
+        .video-card { width: 100%; max-width: 500px; border: 1px solid #333; border-radius: 10px; overflow: hidden; background: #050505; }
+        iframe { width: 100%; aspect-ratio: 16/9; border: none; }
+        .dl-btn { display: block; background: #fff; color: #000; padding: 10px; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
     <div class="header">
-        <h2>RAHUL POWER ENGINE</h2>
-        <input type="text" id="search" placeholder="Gana search karein...">
-        <button onclick="start()">START</button>
+        <h2 style="color: #0f0;">RAHUL POWER ENGINE</h2>
+        <input type="text" id="search" placeholder="Gana ka naam...">
+        <button onclick="go()">SEARCH</button>
     </div>
-    <div id="player"></div>
+    <div id="results">
+        <p style="color: #666; margin-top: 50px;">Yahan gaane dikhenge...</p>
+    </div>
     <script>
-        function start() {
+        function go() {
             let q = document.getElementById('search').value;
-            let p = document.getElementById('player');
+            let r = document.getElementById('results');
             if(!q) return;
-            p.innerHTML = `
-                <iframe src="https://www.youtube.com/embed?listType=search&list=${encodeURIComponent(q)}" allowfullscreen></iframe>
-                <a href="https://v3.9xbuddy.com/search?q=${encodeURIComponent(q)}" target="_blank" class="download-btn">⬇️ DOWNLOAD VIDEO</a>`;
+            // Isse YouTube ka pura search page khulega player ke andar
+            r.innerHTML = `
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed?listType=search&list=${encodeURIComponent(q)}" allowfullscreen></iframe>
+                    <a href="https://v3.9xbuddy.com/search?q=${encodeURIComponent(q)}" target="_blank" class="dl-btn">⬇️ DOWNLOAD VIDEO</a>
+                </div>
+                <p style="color: #0f0;">Upar video ke kone mein (Playlist icon) par click karke dusri video chuno agar pehli na chale!</p>
+            `;
         }
     </script>
 </body>
