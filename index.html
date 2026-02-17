@@ -3,117 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAHUL SUPREME PLAYER</title>
+    <title>RAHUL COMMANDO v100 - FINAL BYPASS</title>
     <style>
-        :root { --main: #ff0000; --bg: #0f0f0f; --text: #ffffff; }
-        body { background: var(--bg); color: var(--text); font-family: sans-serif; margin: 0; padding-bottom: 70px; }
-        .header { background: #202020; padding: 10px; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; gap: 10px; }
-        input { flex: 1; padding: 10px; border-radius: 20px; border: none; background: #333; color: #fff; outline: none; }
-        .btn-search { background: var(--main); color: #fff; border: none; padding: 10px 15px; border-radius: 20px; font-weight: bold; }
-        
-        #video-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; padding: 15px; }
-        .video-card { background: #1a1a1a; border-radius: 12px; overflow: hidden; }
-        .video-card iframe { width: 100%; aspect-ratio: 16/9; border: none; }
-        .video-info { padding: 10px; text-align: left; }
-        .video-info h3 { font-size: 14px; margin: 5px 0; color: #efefef; }
-        
-        .actions { display: flex; justify-content: space-around; padding: 10px; border-top: 1px solid #333; }
-        .actions button, .actions a { background: transparent; color: #aaa; border: none; font-size: 12px; cursor: pointer; text-decoration: none; }
-        .actions button.active { color: var(--main); }
-
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #0f0f0f; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #333; }
-        .nav-item { color: #aaa; font-size: 10px; text-decoration: none; text-align: center; }
-        .nav-item.active { color: #fff; }
+        body { background: #000; color: #fff; font-family: sans-serif; text-align: center; margin: 0; }
+        .header { background: linear-gradient(to bottom, #ff0000, #000); padding: 30px; border-bottom: 5px solid #00ff00; }
+        .main-power { margin-top: 50px; padding: 20px; }
+        .launch-btn { 
+            background: #00ff00; color: #000; width: 90%; padding: 25px; 
+            font-size: 24px; font-weight: 900; border-radius: 100px; 
+            border: none; cursor: pointer; box-shadow: 0 0 30px #00ff00;
+            text-decoration: none; display: inline-block;
+        }
+        .info { color: gold; margin-top: 20px; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <b style="color: red; font-size: 20px;">R</b>
-    <input type="text" id="query" placeholder="YouTube par search karein...">
-    <button class="btn-search" onclick="searchVideo()">SEARCH</button>
+    <h1 style="margin:0; letter-spacing: 5px;">RAHUL COMMANDO</h1>
+    <p style="color:#00ff00">● 100% GUARANTEED SATELLITE SYSTEM</p>
 </div>
 
-<div id="video-container">
+<div class="main-power">
+    <h2 style="color:red;">SATELLITE LINK READY!</h2>
+    
+    <a href="intent://mtv.etv.co.in/hls/live/master.m3u8#Intent;scheme=http;type=video/*;package=com.mxtech.videoplayer.ad;S.title=RAHUL%20LIVE%20TV;end" class="launch-btn">
+        🚀 START LIVE CRICKET / MOVIES
+    </a>
+
+    <div class="info">
+        EK BAAR CLICK KARO - MX PLAYER MEIN CHAL JAYEGA!<br>
+        (Browser ka error bypass ho gaya hai)
     </div>
-
-<div class="bottom-nav">
-    <a href="#" class="nav-item active" onclick="loadTrending()">🏠 Home</a>
-    <a href="#" class="nav-item" onclick="showSection('history')">📜 History</a>
-    <a href="#" class="nav-item" onclick="showSection('likes')">❤️ Likes</a>
-    <a href="#" class="nav-item" onclick="showSection('shorts')">🩳 Shorts</a>
 </div>
 
-<script>
-    // Database mimic using LocalStorage
-    let history = JSON.parse(localStorage.getItem('rahul_history')) || [];
-    let likes = JSON.parse(localStorage.getItem('rahul_likes')) || [];
-
-    // 1. Shuruat mein trending videos dikhana
-    window.onload = function() { loadTrending(); };
-
-    function loadTrending() {
-        renderVideos(["NCS Music", "New Movies 2026", "Live Cricket", "Bhojpuri Songs"]);
-    }
-
-    function searchVideo() {
-        let q = document.getElementById('query').value;
-        if(q) {
-            renderVideos([q]);
-            saveToHistory(q);
-        }
-    }
-
-    function renderVideos(queries) {
-        let container = document.getElementById('video-container');
-        container.innerHTML = "";
-        queries.forEach(q => {
-            for(let i=0; i<3; i++) { // Ek search par 3 videos dikhayega
-                let div = document.createElement('div');
-                div.className = 'video-card';
-                div.innerHTML = `
-                    <iframe src="https://www.youtube.com/embed?listType=search&list=${encodeURIComponent(q)}&index=${i}" allowfullscreen></iframe>
-                    <div class="video-info">
-                        <h3>${q} - Real Video Result ${i+1}</h3>
-                        <div class="actions">
-                            <button onclick="toggleLike('${q}')">❤️ LIKE</button>
-                            <a href="https://v3.9xbuddy.com/search?q=${encodeURIComponent(q)}" target="_blank">⬇️ DOWNLOAD</a>
-                            <button onclick="share()">🔗 SHARE</button>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(div);
-            }
-        });
-    }
-
-    function saveToHistory(q) {
-        if(!history.includes(q)) history.push(q);
-        localStorage.setItem('rahul_history', JSON.stringify(history));
-    }
-
-    function toggleLike(q) {
-        if(!likes.includes(q)) likes.push(q);
-        localStorage.setItem('rahul_likes', JSON.stringify(likes));
-        alert("Video Liked! ❤️");
-    }
-
-    function showSection(type) {
-        let container = document.getElementById('video-container');
-        container.innerHTML = `<h2 style="padding:15px; text-transform:capitalize;">${type}</h2>`;
-        let data = type === 'history' ? history : (type === 'likes' ? likes : []);
-        
-        if(data.length === 0) {
-            container.innerHTML += `<p style="padding:15px; color:#666;">Yahan kuch nahi hai...</p>`;
-        } else {
-            renderVideos(data);
-        }
-    }
-
-    function share() {
-        alert("Link copy ho gaya! Apne doston ko bhein.");
-    }
-</script>
+<div style="margin-top:50px; padding:10px; border:1px dashed #333;">
+    <p>Agar ek link na chale toh niche wala try karo:</p>
+    <a href="intent://live-hls-v3-aje.akamaized.net/dns6tr4p/index.m3u8#Intent;scheme=http;type=video/*;package=com.mxtech.videoplayer.ad;S.title=RAHUL%20WORLD%20TV;end" style="color:cyan; font-weight:bold;">TRY SECOND SATELLITE FEED</a>
+</div>
 
 </body>
 </html>
